@@ -1,0 +1,43 @@
+services:
+  # Backend API service
+  - type: web
+    name: ugbcm-backend
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    region: oregon
+    healthCheckPath: /health
+    envVars:
+      - key: GEE_PROJECT_ID
+        value: graphic-tide-513321-m3
+      - key: API_HOST
+        value: 0.0.0.0
+      - key: API_PORT
+        value: "8000"
+      - key: CORS_ORIGINS
+        value: "https://ugbcm-frontend.onrender.com,http://localhost:5173"
+      - key: CACHE_DIR
+        value: /app/cache
+      - key: CACHE_TTL_DAYS
+        value: "30"
+      - key: RATE_LIMIT_REQUESTS
+        value: "100"
+      - key: RATE_LIMIT_WINDOW_SECONDS
+        value: "60"
+      - key: PYTHONPATH
+        value: /app
+
+  # Frontend static site (served via nginx in Docker)
+  - type: web
+    name: ugbcm-frontend
+    env: docker
+    dockerfilePath: ./frontend/Dockerfile
+    dockerContext: ./frontend
+    plan: free
+    region: oregon
+    envVars:
+      - key: VITE_API_URL
+        value: https://ugbcm-backend.onrender.com
+      - key: VITE_WS_URL
+        value: wss://ugbcm-backend.onrender.com
