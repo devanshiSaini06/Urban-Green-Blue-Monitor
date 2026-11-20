@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urban Green and Blue Change Monitor - Static View</title>
+  <meta name="description" content="Static view of land cover change analysis for Bengaluru Urban and Gautam Buddha Nagar (2018-2025)">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #1f2937; background: #f9fafb; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    header { text-align: center; margin-bottom: 2rem; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    h1 { color: #16a34a; margin-bottom: 0.5rem; }
+    .badge { display: inline-block; padding: 0.5rem 1rem; background: #fef3c7; color: #92400e; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; margin-bottom: 1rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .card h2 { color: #16a34a; margin-bottom: 1rem; font-size: 1.25rem; }
+    .stat-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb; }
+    .stat-row:last-child { border-bottom: none; }
+    .stat-label { color: #6b7280; }
+    .stat-value { font-weight: 600; }
+    .gain { color: #16a34a; }
+    .loss { color: #ef4444; }
+    .map-placeholder { background: #f3f4f6; border-radius: 8px; height: 200px; display: flex; align-items: center; justify-content: center; color: #9ca3af; margin-top: 1rem; }
+    .warning { background: #fef3c7; border: 1px solid #f59e0b; color: #92400e; padding: 1rem; border-radius: 8px; margin-top: 1rem; font-size: 0.875rem; }
+    footer { text-align: center; margin-top: 2rem; color: #6b7280; font-size: 0.875rem; }
+    @media (max-width: 640px) { .container { padding: 1rem; } header { padding: 1rem; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">⚠ Static View - Sample Data Only</div>
+      <h1>Urban Green & Blue Change Monitor</h1>
+      <p>Land Cover Change Analysis for Indian Districts (2018–2025)</p>
+      <p><strong>Study Areas:</strong> Bengaluru Urban (Karnataka) & Gautam Buddha Nagar / Greater Noida (Uttar Pradesh)</p>
+    </header>
+
+    <div class="warning">
+      <strong>⚠️ This is a static fallback view.</strong> This page shows pre-computed sample data. For live analysis with custom parameters, real-time maps, and full interactivity, please use the <a href="#" style="color: #16a34a;">full application</a> (requires backend server).
+    </div>
+
+    <div class="grid">
+      <!-- Bengaluru Urban -->
+      <div class="card">
+        <h2>📍 Bengaluru Urban (Karnataka)</h2>
+        <div class="stat-row"><span class="stat-label">Study Period</span><span class="stat-value">2018–2025</span></div>
+        <div class="stat-row"><span class="stat-label">Season</span><span class="stat-value">Oct–Dec</span></div>
+        <div class="stat-row"><span class="stat-label">Classifier</span><span class="stat-value">Spectral Rules</span></div>
+        <div class="stat-row"><span class="stat-label">Scale</span><span class="stat-value">20 m</span></div>
+
+        <h3 style="margin-top: 1rem; margin-bottom: 0.5rem;">Key Changes (2018 → 2025)</h3>
+        <div class="stat-row"><span class="stat-label">Vegetation</span><span class="stat-value gain">+4.8 km² (+9.6%)</span></div>
+        <div class="stat-row"><span class="stat-label">Water</span><span class="stat-value gain">+1.9 km² (+18.8%)</span></div>
+        <div class="stat-row"><span class="stat-label">Built-up/Bare</span><span class="stat-value loss">+9.7 km² (+24.1%)</span></div>
+        <div class="stat-row"><span class="stat-label">Mean NDVI</span><span class="stat-value gain">+0.048</span></div>
+
+        <div class="map-placeholder">🗺️ Map: Vegetation / Water / Built-up layers (static PNG in full app)</div>
+
+        <div class="warning" style="margin-top: 1rem; font-size: 0.75rem;">
+          <strong>Data Quality:</strong> 2018 has low image count (8 vs 22 in 2025). 2018 values have higher uncertainty.
+        </div>
+      </div>
+
+      <!-- Gautam Buddha Nagar -->
+      <div class="card">
+        <h2>📍 Gautam Buddha Nagar (Greater Noida)</h2>
+        <div class="stat-row"><span class="stat-label">Study Period</span><span class="stat-value">2018–2025</span></div>
+        <div class="stat-row"><span class="stat-label">Season</span><span class="stat-value">Oct–Dec</span></div>
+        <div class="stat-row"><span class="stat-label">Classifier</span><span class="stat-value">Spectral Rules</span></div>
+        <div class="stat-row"><span class="stat-label">Scale</span><span class="stat-value">20 m</span></div>
+
+        <h3 style="margin-top: 1rem; margin-bottom: 0.5rem;">Key Changes (2018 → 2025)</h3>
+        <div class="stat-row"><span class="stat-label">Vegetation</span><span class="stat-value loss">-3.2 km² (-8.4%)</span></div>
+        <div class="stat-row"><span class="stat-label">Water</span><span class="stat-value gain">+0.7 km² (+12.3%)</span></div>
+        <div class="stat-row"><span class="stat-label">Built-up/Bare</span><span class="stat-value loss">+12.4 km² (+31.2%)</span></div>
+        <div class="stat-row"><span class="stat-label">Mean NDVI</span><span class="stat-value loss">-0.032</span></div>
+
+        <div class="map-placeholder">🗺️ Map: Vegetation / Water / Built-up layers (static PNG in full app)</div>
+
+        <div class="warning" style="margin-top: 1rem; font-size: 0.75rem;">
+          <strong>Data Quality:</strong> 2018 has low image count. Built-up class includes bare soil from agricultural cycles.
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 1.5rem;">
+      <h2>📊 Key Caveats (Read Before Interpreting)</h2>
+      <ol style="margin-left: 1.5rem; margin-top: 0.5rem; line-height: 2;">
+        <li><strong>2018 data quality:</strong> Sentinel-2 coverage over India was thinner in 2018; fewer images, lower coverage.</li>
+        <li><strong>Built-up ≠ impervious:</strong> Spectral NDBI class captures bare soil and fallow fields; use Dynamic World classifier for comparison.</li>
+        <li><strong>Seasonal window:</strong> Oct–Dec mixes post-monsoon water and crop residues; compare with other seasons.</li>
+        <li><strong>Boundary dilution:</strong> Districts include large rural areas, diluting urban change signal.</li>
+        <li><strong>Low trend power:</strong> n=8 years gives very low statistical power for trend tests.</li>
+        <li><strong>Validation limited:</strong> WorldCover reference only for 2020/2021.</li>
+        <li><strong>Threshold sensitivity:</strong> Results sensitive to NDVI/MNDWI/NDBI thresholds.</li>
+      </ol>
+    </div>
+
+    <div class="card" style="margin-top: 1.5rem;">
+      <h2>🔧 Full Application Features</h2>
+      <p>The full interactive application includes:</p>
+      <ul style="margin-left: 1.5rem; margin-top: 0.5rem; line-height: 2; columns: 2;">
+        <li>Interactive maps with 6 layers (True Color, NDVI, MNDWI, NDBI, Land Cover, Change)</li>
+        <li>Year slider with play/pause animation</li>
+        <li>Spectral vs Dynamic World classifier comparison</li>
+        <li>Adjustable classification thresholds</li>
+        <li>Trend analysis (Mann-Kendall, Sen's slope, linear regression)</li>
+        <li>Land cover transition matrices</li>
+        <li>Landscape metrics (patch count, size, connectivity)</li>
+        <li>Urban growth indicators (growth rate, expansion direction, distance profile)</li>
+        <li>Lakes detection and shrinkage alerts</li>
+        <li>Change hotspots (1km grid)</li>
+        <li>Environmental correlations (LST, night lights, population, rainfall)</li>
+        <li>PDF report generation</li>
+        <li>Shareable URLs with all parameters</li>
+        <li>CSV/Excel/GeoTIFF export</li>
+      </ul>
+    </div>
+
+    <footer>
+      <p>Urban Green and Blue Change Monitor | Static Fallback View</p>
+      <p>Data: Sentinel-2 (COPERNICUS/S2_SR_HARMONIZED) • Processed in Google Earth Engine</p>
+      <p>Study Period: 2018–2025 (8 years) • Seasonal Window: Oct–Dec • Scale: 20 m</p>
+    </footer>
+  </div>
+</body>
+</html>

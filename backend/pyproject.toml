@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ugbcm-backend"
+version = "1.0.0"
+description = "Urban Green and Blue Change Monitor - Backend API"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi==0.109.0",
+    "uvicorn[standard]==0.27.0",
+    "pydantic==2.5.3",
+    "pydantic-settings==2.1.0",
+    "python-dotenv==1.0.0",
+    "earthengine-api==0.1.384",
+    "numpy==1.26.3",
+    "pandas==2.1.4",
+    "httpx==0.26.0",
+    "aiofiles==23.2.1",
+    "python-multipart==0.0.6",
+    "pyyaml==6.0.1",
+    "reportlab==4.0.8",
+    "weasyprint==60.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==7.4.4",
+    "pytest-asyncio==0.23.3",
+    "pytest-cov==4.1.0",
+    "httpx==0.26.0",
+    "black==23.12.1",
+    "ruff==0.1.14",
+    "mypy==1.7.1",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+select = ["E", "F", "I", "N", "W", "UP", "B", "C4", "T20"]
+ignore = ["E501", "B008"]
+exclude = [".venv", "venv", "__pycache__", ".git", "build", "dist"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
