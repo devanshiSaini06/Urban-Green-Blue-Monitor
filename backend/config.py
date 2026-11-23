@@ -5,6 +5,9 @@ Single source of truth for all configurable parameters.
 from dataclasses import dataclass
 from typing import Dict, List, Optional
 import os
+import base64
+import json as json_lib
+import logging
 
 
 # =============================================================================
@@ -146,6 +149,21 @@ RANDOM_SAMPLE_SIZE = 1500
 GEE_PROJECT_ID = "graphic-tide-513321-m3"
 GEE_SERVICE_ACCOUNT_KEY_PATH = os.getenv("GEE_SERVICE_ACCOUNT_KEY_PATH")
 GEE_SERVICE_ACCOUNT_KEY_JSON = os.getenv("GEE_SERVICE_ACCOUNT_KEY_JSON")
+
+# Decode base64 service account key for GEE initialization
+logger = logging.getLogger(__name__)
+
+if GEE_SERVICE_ACCOUNT_KEY_JSON:
+    try:
+        GEE_SERVICE_ACCOUNT_KEY = json_lib.loads(
+            base64.b64decode(GEE_SERVICE_ACCOUNT_KEY_JSON).decode("utf-8")
+        )
+        logger.info("GEE service account key decoded successfully")
+    except Exception as e:
+        logger.error(f"Failed to decode GEE_SERVICE_ACCOUNT_KEY_JSON: {e}")
+        GEE_SERVICE_ACCOUNT_KEY = None
+else:
+    GEE_SERVICE_ACCOUNT_KEY = None
 
 # =============================================================================
 # CACHING
