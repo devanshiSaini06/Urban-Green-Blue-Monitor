@@ -14,7 +14,7 @@ services:
       - key: API_HOST
         value: 0.0.0.0
       - key: API_PORT
-        value: "8000"
+        value: "10000"
       - key: CORS_ORIGINS
         value: "https://ugbcm-frontend.onrender.com,http://localhost:5173"
       - key: CACHE_DIR
@@ -28,7 +28,7 @@ services:
       - key: PYTHONPATH
         value: /app
 
-  # Frontend static site (served via nginx in Docker)
+  # Frontend static site
   - type: web
     name: ugbcm-frontend
     env: docker
@@ -36,8 +36,6 @@ services:
     dockerContext: ./frontend
     plan: free
     region: oregon
-    envVars:
-      - key: VITE_API_URL
-        value: https://ugbcm-backend.onrender.com
-      - key: VITE_WS_URL
-        value: wss://ugbcm-backend.onrender.com
+    # Build-time argument: embeds into React bundle
+    buildArgs:
+      VITE_API_URL: https://ugbcm-backend.onrender.com
